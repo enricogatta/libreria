@@ -42,6 +42,11 @@ inizializza_dati()
 print(f"Server avviato. Generati {len(libri)} libri di test.")
 
 
+@app.route('/api/libri', methods=['GET'])
+def get_libri():
+    """Restituisce l'elenco completo dei libri in formato JSON."""
+    return jsonify(libri)
+
 
 if __name__ == '__main__':
     # Avvio del server in modalità debug
