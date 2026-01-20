@@ -78,6 +78,16 @@ def elimina_libro(id):
     return jsonify({'error': 'Libro non trovato'}), 404
 
 
+@app.route('/api/libri', methods=['DELETE'])
+def elimina_tutti_libri():
+    """Elimina tutti i libri dalla libreria."""
+    global libri
+    libri.clear()
+    return jsonify({"messaggio": "Tutti i libri sono stati eliminati con successo"}), 200
+
+
+
+
 if __name__ == '__main__':
     # Avvio del server in modalità debug
     app.run(debug=True)
