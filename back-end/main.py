@@ -66,6 +66,18 @@ def add_libro():
     return jsonify(nuovo_libro), 201
 
 
+@app.route('/api/libri/<id>', methods=['DELETE'])
+def elimina_libro(id):
+    """Elimina un libro dato il suo ID."""
+    for libro in libri:
+        if libro['id'] == id:
+            libri.remove(libro)
+            return jsonify({"messaggio": f"Libro {id} eliminato con successo"}), 200
+    
+    # Se non trovato
+    return jsonify({'error': 'Libro non trovato'}), 404
+
+
 if __name__ == '__main__':
     # Avvio del server in modalità debug
     app.run(debug=True)
