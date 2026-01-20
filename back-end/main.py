@@ -44,8 +44,26 @@ print(f"Server avviato. Generati {len(libri)} libri di test.")
 
 @app.route('/api/libri', methods=['GET'])
 def get_libri():
-    """Restituisce l'elenco completo dei libri in formato JSON."""
     return jsonify(libri)
+
+
+@app.route('/api/libri', methods=['POST'])
+def add_libro():
+    """Aggiunge un nuovo libro. L'ID è generato dal server."""
+    dati = request.get_json()  # Recupera i dati inviati (es. dal form React)
+
+    nuovo_libro = {
+        'id': str(uuid.uuid4()),  # Generiamo l'ID qui (lato server)
+        'titolo': dati.get('titolo'),
+        'autore': dati.get('autore'),
+        'anno': dati.get('anno'),
+        'genere': dati.get('genere')
+    }
+
+    libri.append(nuovo_libro)
+    
+    # Restituiamo il libro creato e il codice 201 (Created)
+    return jsonify(nuovo_libro), 201
 
 
 if __name__ == '__main__':
