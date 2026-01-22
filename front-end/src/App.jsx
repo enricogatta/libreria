@@ -32,6 +32,19 @@ function App() {
     }
   };
 
+  const aggiungiLibro = async (e) => {
+    e.preventDefault();
+    const res = await fetch('http://127.0.0.1:5000/api/libri', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nuovoLibro)
+    });
+    if (res.ok) {
+      fetchLibri();
+      setNuovoLibro({ titolo: '', autore: '', anno: '', genere: '' });
+    }
+  };
+
   const eliminaLibro = async (id) => {
     if (window.confirm('Sei sicuro di voler eliminare questo libro?')) {
       await fetch(`http://127.0.0.1:5000/api/libri/${id}`, { method: 'DELETE' });
@@ -46,30 +59,21 @@ function App() {
     }
   };
 
-
-  const aggiungiLibro = async (e) => {
-    e.preventDefault();
-    const res = await fetch('http://127.0.0.1:5000/api/libri', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(nuovoLibro)
-    });
-    if (res.ok) {
-      fetchLibri();
-      setNuovoLibro({ titolo: '', autore: '', anno: '', genere: '' });
-    }
-  };
-
   const libriFiltrati = libri.filter(l =>
     l.autore?.toLowerCase().includes(ricerca.toLowerCase()) ||
     l.genere?.toLowerCase().includes(ricerca.toLowerCase())
   );
+
+
 
   return (
     <div className="page-wrapper">
       <div className="main-container">
         <header className="header-app">
           <h1>Gestione Libreria</h1>
+          {libri.length > 0 && (
+            <button className="btn-danger" onClick={svuotaLibreria}>Svuota Libreria</button>
+          )}
         </header>
 
         <section className="form-card">
