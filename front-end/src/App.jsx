@@ -5,6 +5,7 @@ function App() {
   const [libri, setLibri] = useState([]);
   const [generi, setGeneri] = useState([]);
   const [nuovoLibro, setNuovoLibro] = useState({ titolo: '', autore: '', anno: '', genere: '' });
+  const [ricerca, setRicerca] = useState("");
 
   useEffect(() => {
     fetchLibri();
@@ -28,6 +29,20 @@ function App() {
       setGeneri(data);
     } catch (error) {
       console.error("Errore nel recupero dei generi:", error);
+    }
+  };
+
+  const eliminaLibro = async (id) => {
+    if (window.confirm('Sei sicuro di voler eliminare questo libro?')) {
+      await fetch(`http://127.0.0.1:5000/api/libri/${id}`, { method: 'DELETE' });
+      fetchLibri();
+    }
+  };
+
+  const svuotaLibreria = async () => {
+    if (window.confirm('Sei sicuro di voler cancellare TUTTI i libri?')) {
+      await fetch('http://127.0.0.1:5000/api/libri', { method: 'DELETE' });
+      fetchLibri();
     }
   };
 
@@ -67,6 +82,7 @@ function App() {
             <button type="submit" className="btn-primary">Aggiungi Libro</button>
           </form>
         </section>
+
       </div>
     </div>
   );
