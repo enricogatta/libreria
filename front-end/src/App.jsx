@@ -91,6 +91,15 @@ function App() {
             <button type="submit" className="btn-primary">Aggiungi Libro</button>
           </form>
         </section>
+
+        <section className="search-bar">
+          <input 
+            type="text" 
+            placeholder="Filtra per autore o genere..." 
+            value={ricerca} 
+            onChange={e => setRicerca(e.target.value)} 
+          />
+        </section>
         
         <main className="books-grid">
           {libriFiltrati.map(libro => (

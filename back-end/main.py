@@ -26,21 +26,21 @@ generi = [
     'Umoristico'
 ]
 
-# Database in-memory
+
 libri = []
 
 def inizializza_dati():
     for _ in range(20):
         nuovo_libro = {
-            'id': str(uuid.uuid4()),  # Generazione ID univoco
-            'titolo': fake.sentence(nb_words=3).replace('.', ''), # Titolo simulato
+            'id': str(uuid.uuid4()), 
+            'titolo': fake.sentence(nb_words=3).replace('.', ''), 
             'autore': fake.name(),
             'anno': fake.year(),
             'genere': random.choice(generi)
         }
         libri.append(nuovo_libro)
 
-# Generiamo i dati subito all'avvio dello script
+# Genera i dati 
 inizializza_dati()
 print(f"Server avviato. Generati {len(libri)} libri di test.")
 
@@ -58,10 +58,10 @@ def get_generi():
 @app.route('/api/libri', methods=['POST'])
 def add_libro():
     """Aggiunge un nuovo libro. L'ID è generato dal server."""
-    dati = request.get_json()  # Recupera i dati inviati (es. dal form React)
+    dati = request.get_json()  # Recupera i dati inviati dal form in React
 
     nuovo_libro = {
-        'id': str(uuid.uuid4()),  # Generiamo l'ID qui (lato server)
+        'id': str(uuid.uuid4()),  # Genera id 
         'titolo': dati.get('titolo'),
         'autore': dati.get('autore'),
         'anno': dati.get('anno'),
@@ -70,8 +70,8 @@ def add_libro():
 
     libri.append(nuovo_libro)
     
-    # Restituiamo il libro creato e il codice 201 (Created)
-    return jsonify(nuovo_libro), 201
+    
+    return jsonify(nuovo_libro), 201 # Messaggio di Created
 
 
 @app.route('/api/libri/<id>', methods=['DELETE'])
@@ -82,7 +82,7 @@ def elimina_libro(id):
             libri.remove(libro)
             return jsonify({"messaggio": f"Libro {id} eliminato con successo"}), 200
          
-    # Se non trovato
+    
     return jsonify({'error': 'Libro non trovato'}), 404
 
 
