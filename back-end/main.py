@@ -1,11 +1,14 @@
 from flask import Flask, jsonify, request
 from faker import Faker
+from flask_cors import CORS
 import uuid
 import random
 
-# Configurazione App e Faker
+
 app = Flask(__name__)
-fake = Faker()
+CORS(app) # Abilita le chiamate da React
+
+fake = Faker('it_IT')
 
 # Lista dei generi disponibili
 generi = [
@@ -47,6 +50,11 @@ def get_libri():
     return jsonify(libri)
 
 
+@app.route('/api/generi', methods=['GET'])
+def get_generi():
+    return jsonify(generi)
+
+
 @app.route('/api/libri', methods=['POST'])
 def add_libro():
     """Aggiunge un nuovo libro. L'ID è generato dal server."""
@@ -73,7 +81,7 @@ def elimina_libro(id):
         if libro['id'] == id:
             libri.remove(libro)
             return jsonify({"messaggio": f"Libro {id} eliminato con successo"}), 200
-    
+         
     # Se non trovato
     return jsonify({'error': 'Libro non trovato'}), 404
 
