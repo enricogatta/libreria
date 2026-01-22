@@ -39,3 +39,18 @@ input, select {
 
 select option { background-color: white; color: #495057; }
 .btn-primary { background: #007bff; color: white; border: none; grid-column: span 2; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+}
+
+.book-details h3 { color: #007bff; margin: 0 0 10px 0; }
+.book-details p { color: #495057; margin: 5px 0; }
+.btn-danger { background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; }

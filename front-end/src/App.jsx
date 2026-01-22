@@ -60,6 +60,11 @@ function App() {
     }
   };
 
+  const libriFiltrati = libri.filter(l =>
+    l.autore?.toLowerCase().includes(ricerca.toLowerCase()) ||
+    l.genere?.toLowerCase().includes(ricerca.toLowerCase())
+  );
+
   return (
     <div className="page-wrapper">
       <div className="main-container">
@@ -82,7 +87,20 @@ function App() {
             <button type="submit" className="btn-primary">Aggiungi Libro</button>
           </form>
         </section>
-
+        
+        <main className="books-grid">
+          {libriFiltrati.map(libro => (
+            <div key={libro.id} className="book-item">
+              <div className="book-details">
+                <h3>{libro.titolo}</h3>
+                <p><strong>Autore:</strong> {libro.autore}</p>
+                <p><strong>Genere:</strong> {libro.genere} | <strong>Anno:</strong> {libro.anno}</p>
+                <small>ID: {libro.id}</small>
+              </div>
+              <button className="btn-delete" onClick={() => eliminaLibro(libro.id)}>Elimina</button>
+            </div>
+          ))}
+        </main>
       </div>
     </div>
   );
