@@ -19,7 +19,25 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.header-app h1 { color: #2c3e50; margin: 0; }
+/* Header */
+.header-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.header-app h1 {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.header-app .btn-danger {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
 
 .form-card form {
   display: grid;
@@ -33,8 +51,8 @@ input, select {
   border: 1px solid #ced4da;
   border-radius: 8px;
   font-size: 1rem;
-  color: white; /* Testo bianco richiesto */
-  background-color: #495057; /* Sfondo scuro richiesto */
+  color: white; 
+  background-color: #495057;
 }
 
 select option { background-color: white; color: #495057; }
