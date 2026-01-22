@@ -20,3 +20,22 @@
 }
 
 .header-app h1 { color: #2c3e50; margin: 0; }
+
+.form-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+input, select {
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white; /* Testo bianco richiesto */
+  background-color: #495057; /* Sfondo scuro richiesto */
+}
+
+select option { background-color: white; color: #495057; }
+.btn-primary { background: #007bff; color: white; border: none; grid-column: span 2; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
