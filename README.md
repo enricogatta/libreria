@@ -91,11 +91,8 @@ cd libreria
 # Naviga nella directory backend
 cd back-end
 
-# Installa le dipendenze
-uv sync
-
 # Avvia il server di sviluppo
-uv run python main.py
+uv run .\main.py
 ```
 
 Il backend sarà disponibile su `http://127.0.0.1:5000`
@@ -198,8 +195,7 @@ Restituisce la lista dei generi disponibili.
 ### **Backend**
 ```bash
 cd back-end
-uv sync                    # Installa dipendenze
-uv run python main.py      # Avvia server sviluppo
+uv run .\main.py      # Avvia server sviluppo
 ```
 
 ### **Frontend**
@@ -207,9 +203,6 @@ uv run python main.py      # Avvia server sviluppo
 cd front-end
 npm install               # Installa dipendenze
 npm run dev              # Avvia server sviluppo
-npm run build            # Build per produzione
-npm run lint             # Esegue ESLint
-npm run preview          # Preview build produzione
 ```
 
 ## 📁 Struttura del Progetto
@@ -232,19 +225,3 @@ libreria/
 └── README.md            # Questa documentazione
 ```
 
-## 🤝 Contributi
-
-Questo progetto è stato sviluppato come dimostrazione di competenze full-stack. Per suggerimenti o miglioramenti:
-
-1. Fork del repository
-2. Crea un branch per le tue modifiche
-3. Invia una Pull Request
-
-## 📄 Licenza
-
-Questo progetto è distribuito sotto licenza MIT. Vedi il file `LICENSE` per maggiori dettagli.
-
----
-
-**Sviluppato con ❤️ per dimostrare competenze nello sviluppo web moderno**</content>
-<parameter name="filePath">c:\Users\enric\Desktop\5AI\tpi\libreria\README.md
