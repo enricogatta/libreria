@@ -220,8 +220,7 @@ libreria/
 │   │   └── main.jsx     # Entry point
 │   ├── package.json     # Configurazione dipendenze Node
 │   └── vite.config.js   # Configurazione Vite
-├── .github/              # Configurazioni GitHub
-│   └── copilot-instructions.md
+├
 └── README.md            # Questa documentazione
 ```
 
